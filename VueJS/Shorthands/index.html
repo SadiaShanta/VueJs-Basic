@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="https://unpkg.com/vue@next"></script>
+   <title>Document</title>
+</head>
+<!-- Shorthands are: 'V-on:' replace with '@' and 'v-bind:' replace with ":" -->
+<body>
+    <div id="app">
+        <button v-on:click="getIt">Notes</button>
+        <hr/>
+        <a href="">Go to the worst/best website in the world</a>
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return {
+                website: 'https://chat.openai.com/'
+            }
+        },
+        methods:{
+            getIt(){
+                alert('"Get out of here!"')
+            }
+        }
+    }
+    Vue.createApp(App).mount('#app')
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!-- Whenever we want to make a reference to something that lives 
+inside the data within a method of vue js we just need to say this. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="https://unpkg.com/vue@next"></script>
+
+   <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{welcome()}}</p>
+    </div>
+</body>
+<script>
+    const date = new Date().toLocaleString()
+    const App = {
+        data(){
+            return {
+                gretting: 'Hello guys today is ' + date,
+                isItTrue: true,
+                array: ['Francis', 'Jane' , 'Steve'],
+                obj: {
+                    car: 'Ferrari'
+                },
+                func:()=>{
+                    return 'Message from function'
+                }
+
+            }
+        },
+        methods: {
+            welcome(){
+                const randomName = this.array[Math.floor(Math.random() * this.array.length)]
+                if(this.isItTrue){
+                    return `${this.gretting}, my name is ${randomName}`
+                }
+                return this.obj.car
+            }
+        }
+        
+    }
+     Vue.createApp(App).mount('#app')
+</script>
+</html>

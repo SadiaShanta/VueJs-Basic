@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="https://unpkg.com/vue@next"></script>
+   <title>Document</title>
+</head>
+<!-- How we can catch an event with a Directive? -->
+<body>
+    <div id="app">
+        <div class="box" v-on:mousemove="getCoord">
+             Hover me
+        </div>
+        <p>x: {{ x }}</p>
+        <p>y: {{ y }}</p>
+        <h1>{{name}}</h1>
+        <div v-on:click = "updateName">
+            Click me!!
+        </div>
+
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                name: 'Sadia',
+                x:0,
+                y:0
+            }
+        },
+        methods:{
+            updateName(){
+                this.name = 'Iqbal'
+            },
+            getCoord(event){
+                this.x = event.clientX;
+                this.y = event.clientY;
+            }
+        }
+    }
+    Vue.createApp(App).mount('#app')
+</script>
+<style>
+    .box{
+        background: red;
+        width: 200px;
+        height: 200px;
+    }
+</style>
+</html>

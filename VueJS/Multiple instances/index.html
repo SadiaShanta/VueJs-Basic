@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="https://unpkg.com/vue@next"></script>
+   <title>Document</title>
+</head>
+<!-- We can run multiple instances of view or views -->
+<!-- We can access the app 1 value from the number 2 and vice versa -->
+<!-- We can communicate between instances but if want to communicate from the outside? we can access outside var from the instances -->
+<body>
+    <div id="app1">
+        <div>Instance one: {{value}}</div>
+        <button @click="changeValue">Change</button>
+    </div>
+    <div id="app2">
+        <div>Instance two: {{value}}</div>
+        <button @click="sayHello">Say Hello</button>
+    </div>
+</body>
+<script>
+    let message =  "Hey guys";
+    const App1 = Vue.createApp({
+        data(){
+            return{
+                value: 'Instance one working'
+            }
+        },
+        methods: {
+            changeValue(){
+                console.log(app2)
+                app2.value = 'THe value changed'
+            }
+        }
+    }).mount('#app1');
+
+
+    const App2 = Vue.createApp({
+        data(){
+            return{
+                value: 'Instance two working'
+            }
+        },
+        methods:{
+            sayHello(){
+                alert(message)
+            }
+        }
+    }).mount('#app2')
+</script>
+</html>

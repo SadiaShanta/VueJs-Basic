@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="https://unpkg.com/vue@next"></script>
+   <title>Document</title>
+</head>
+<body>
+    <!-- Computed properties are used to calculate the value of a property based on some other conditions. 
+    Watchers, on the other hand, are not primarily used for changing the value of a property; instead,
+    they are used to notify you when the value has changed and let you perform certain actions based 
+    on these changes. -->
+    <!-- Computed properties are cached. This means that when you define a computed property, Vue.js will 
+    calculate its value the first time it is accessed,and then it will store that value. Subsequent
+    accesses to the computed property return the cached value without recalculating it, unless one 
+    of its dependencies changes. -->
+    <!-- when the active value will change It will It will call the setTimeout function and change the user name after 3s -->
+    <div id="app">
+        <input v-model="user"/>
+        <button v-on:click="toggleActive">Other action</button>
+        <hr/>
+        <div>
+            Message: {{compMessage()}}
+        </div>
+        <div>
+            Active: {{compActive()}}
+        </div>
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                user:'',
+                active:'false'
+            }
+        },
+        watch:{
+            
+            active(value){
+                console.log('starting')
+                setTimeout(()=>{
+                    console.log('changed')
+                    this.user = 'Jahan'
+                },3000);
+
+            }
+        },
+        computed:{
+            compMessage(){
+                console.log('COMPUTED MESSAGE')
+                return this.user === 'Sadia' ? 'Welcome' : 'Not allowed'
+            },
+            compActive(){
+                console.log('COMPUTED ACTIVE')
+                return this.active ? 'Active': 'Not active'
+            }
+        },
+        methods:{
+            toggleActive(){
+                this.active = this.active ? false : true
+            } 
+        }
+    }
+    Vue.createApp(App).mount('#app')
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="https://unpkg.com/vue@next"></script>
+   <title>Document</title>
+   <!-- Component is a view instance that lives inside of an instance. -->
+   <!-- We are kind of a registering or creating a component that lives inside the create app. -->
+</head>
+<body>
+    <div id="app">
+        <app-header></app-header>
+        <user-name></user-name>
+        <app-footer></app-footer>
+    </div>
+</body>
+<script>
+    const app= Vue.createApp({});
+    app.component('app-header',{
+        data(){
+            return {
+                name: 'HEADER'
+            }
+        },
+        template: `<div>{{name}}</div>`
+    });
+
+    app.component('user-name',{
+        data(){
+            return {
+                name: 'Sadia'
+            }
+        },
+        template: `<div>{{name}}</div>`
+    });
+    app.component('app-footer',{
+        data(){
+            return {
+                name: 'FOOTER'
+            }
+        },
+        template: `<div>{{name}}</div>`
+    });
+    app.mount('#app');
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="https://unpkg.com/vue@next"></script>
+   <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <!-- Here $event means give me the event from App  -->
+        <button v-on:click="changeName('Mahmud', $event)"> 
+            Change name
+        </button>
+        <Form v-on:submit.prevent="handleForm">
+            <input/>
+            <button type="submit">Submit</button>
+        </Form>
+    </div>
+</body>
+<!-- We got second argument "event" as default  -->
+<!-- Prevent Default gonna stop reloading -->
+<script>
+    const App = {
+        data(){
+            return{
+                name: 'Sadia'
+            }
+        },
+        methods:{
+            handleForm(){
+                console.log('Submit form')
+            },
+            changeName(newName,event){
+                this.name = newName;
+                console.log(event)
+            }
+        }
+    }
+    Vue.createApp(App).mount('#app')
+</script>
+</html>

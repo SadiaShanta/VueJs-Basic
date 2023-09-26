@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="https://unpkg.com/vue@next"></script>
+
+   <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{gretting}}</p>
+        <p>Is it true: {{isItTrue ? 'yes' : 'No'}}</p>
+        <p>{{array[0]}}</p>
+        <p>{{obj.car}}</p>
+        <p>{{func()}}</p>
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return {
+                gretting: 'Hello guys today is ' + new Date().toLocaleString(),
+                isItTrue: true,
+                array: ['Francis', 'Jane'],
+                obj: {
+                    car: 'Ferrari'
+                },
+                func:()=>{
+                    return 'Message from function'
+                }
+
+            }
+        },
+        
+    }
+     Vue.createApp(App).mount('#app')
+</script>
+</html>
+
+<!-- When the application starts, it's going to start reading from start to last,
+ so at the beginning the browser is going to read gretting with the curly braces 
+ we don't have Vue.js and when it's on veu js, the vue js is gouing to fire and it's 
+ going to create an instance use that configuration which is in vue. And then it's
+ going to check #app, and the view going back in div and copy all content and it's 
+ going to reading and going to say I have a text interpolation and I have a keyword"gretting".
+Do I have a keyword in my data?yes then developer wants me to replace whatever property we have right here that matches here.  -->

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="https://unpkg.com/vue@next"></script>
+   <title>Document</title>
+</head>
+<body>
+    <!-- The computed property is aware of changes of property 
+        and it will only trigger when that property changes not for one of them. -->
+    <!-- The computed property is just a very smart kind of a function that will only react when 
+    the property that you are using, it changes and not when everything changes or some of them changes.  -->
+    <div id="app">
+        <!-- v model is listening for what the user is entering, and everytime input changes it's going to update the data()  -->
+        <input v-model="user"/>
+        <button v-on:click="toggleActive">Other action</button>
+        <hr/>
+        <div>
+            Message: {{compMessage()}}
+        </div>
+        <div>
+            Active: {{compActive()}}
+        </div>
+    </div>
+</body>
+<script>
+    const App = {
+        data(){
+            return{
+                user:'',
+                active:'false'
+            }
+        },
+        computed:{
+            compMessage(){
+                console.log('COMPUTED MESSAGE')
+                return this.user === 'Sadia' ? 'Welcome' : 'Now allowed'
+            },
+            compActive(){
+                console.log('COMPUTED ACTIVE')
+                return this.active ? 'Active': 'Not active'
+            }
+        },
+        methods:{
+            toggleActive(){
+                this.active = this.active ? false : true
+            } 
+        }
+    }
+    Vue.createApp(App).mount('#app')
+</script>
+</html>

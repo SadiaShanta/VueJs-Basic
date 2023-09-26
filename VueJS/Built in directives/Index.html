@@ -1,0 +1,43 @@
+<!-- Directive is an instruction or a set of instructions that will modify 
+    or do something in your HTML code to get the desire result-->
+<!-- I want to load an image, but the data image is going to be on the source.data(){} -->
+<!-- v-bind is a directive that will bind your property whatever attribute you are using to your instance const APP -->
+<!-- I want to show the myText -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="https://unpkg.com/vue@next"></script>
+
+   <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <img v-bind:src ="src" v-bind:alt="alt"/>
+        <hr/>
+        <a v-bind:href="link">Go to Google</a>
+        <hr/>
+        <p v-text="myText"></p>
+        <hr/>
+        <p v-html="myHtml"></p>
+    </div>
+</body>
+<script>
+    const date = new Date().toLocaleString()
+    const App = {
+        data(){
+            return {
+                src: 'https://picsum.photos/200/300',
+                alt: 'Another image',
+                link: 'http://google.com',
+                myText: 'Hello guys!',
+                myHtml: '<strong>My html</strong>' 
+            }
+        }
+        
+    }
+     Vue.createApp(App).mount('#app')
+</script>
+</html>
